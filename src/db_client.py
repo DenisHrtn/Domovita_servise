@@ -71,3 +71,4 @@ def update_is_posted(ids):
             ''',
                          {ids, }
                          )
+
