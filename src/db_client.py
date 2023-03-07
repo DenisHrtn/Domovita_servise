@@ -47,6 +47,7 @@ def insert_flat(flat):
             micro = EXCLUDED.micro
             ''',  (flat.link, flat.reference, flat.price, flat.title, flat.description, flat.date, flat.area, flat.square, flat.city, flat.rooms, flat.micro, flat.images))
 
+
 def choise(parser_types):
     with psycopg2.connect(dbname=DBNAME, user=USER, password=PASSWORD, host=HOST) as conn:
         with conn.cursor() as curs:
@@ -57,7 +58,8 @@ def choise(parser_types):
             ''',
                          {'parser_types': tuple(parser_types)}
                          )
-            curs.fetchall()
+            return curs.fetchall()
+
 
 def update_is_posted(ids):
     with psycopg2.connect(dbname=DBNAME, user=USER, password=PASSWORD, host=HOST) as conn:
@@ -69,5 +71,3 @@ def update_is_posted(ids):
             ''',
                          {ids, }
                          )
-
-create_flats_table()
