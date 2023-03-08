@@ -52,7 +52,7 @@ def choise(parser_types):
     with psycopg2.connect(dbname=DBNAME, user=USER, password=PASSWORD, host=HOST) as conn:
         with conn.cursor() as curs:
             curs.execute('''
-                    SELECT link, reference, price, title, description, date, photo_links, id FROM flats
+                    SELECT link, reference, price, title, description, date, photo_links, area, id FROM flats
                     WHERE (is_tg_posted = false or is_tg_posted IS NULL)  
                     and reference IN %(parser_types)s
             ''',
