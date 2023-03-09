@@ -16,10 +16,9 @@ def make_post_telegram():
         if post[2] != 0:
             post_mess += f'Цена: {post[2]} BYN, '  #price
         else:
-            post_mess += 'Цена: не указана, '
+            post_mess += 'Цена: не указана, '  #if price is none
         post_mess += f'Дата: {post[5]}, '  #date
         post_mess += f'Район: {post[7]}, '  #area
-        post_mess += f'Площадь: {post[8]}, '
         post_mess += f" ".join(list(map(lambda el: el, post[6].split('{}')[:6])))  #photo_link
         tg_bot.send_post(post_mess)
         time.sleep(1)
