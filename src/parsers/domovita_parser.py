@@ -39,7 +39,16 @@ class DomovitaParser(ParserStandart):
                 description = None
             date = html.find('span', class_='publication-info__item publication-info__publication-date').text.strip()
             area = html.find('span', class_='object-head__additional-info-item').text.strip()
-            square = re.sub('[^0-9]', '', (html.find('div', class_='object-head__additional-info')).text.strip())
+            try:
+                square = set()
+                square_div = html.find_all('div', class_='object-head__additional-info')
+                for square_span in square_div:
+                    square_1 = square_span.findAllNext('span')
+                    ready_square =square_1[1].text.strip()
+                    square.add(ready_square)
+                square = list(square)
+            except Exception as e:
+                square = []
             city = html.find(attrs={'id': 'city'}).text.strip()
             rooms = str(html.find(attrs={'title': '2-комнатные квартиры'}))
             micro = str(html.find('a', attrs={'href': 'https://domovita.by/minsk/kvartiru-lebyazhij/sale'}))

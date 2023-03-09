@@ -20,7 +20,7 @@ def create_flats_table():
                 description CHARACTER VARYING,
                 date CHARACTER VARYING(30),
                 area CHARACTER VARYING(50),
-                square INTEGER,
+                square CHARACTER VARYING,
                 city CHARACTER VARYING(150),
                 rooms CHARACTER VARYING(150),
                 micro CHARACTER VARYING(150)
@@ -52,7 +52,7 @@ def choise(parser_types):
     with psycopg2.connect(dbname=DBNAME, user=USER, password=PASSWORD, host=HOST) as conn:
         with conn.cursor() as curs:
             curs.execute('''
-                    SELECT link, reference, price, title, description, date, photo_links, area, id FROM flats
+                    SELECT link, reference, price, title, description, date, photo_links, area, square id FROM flats
                     WHERE (is_tg_posted = false or is_tg_posted IS NULL)  
                     and reference IN %(parser_types)s
             ''',
