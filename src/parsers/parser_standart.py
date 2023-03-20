@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from src import db_client
+import logging
 
 
 class ParserStandart(ABC):
@@ -9,7 +10,7 @@ class ParserStandart(ABC):
         return 'unnamed_parser'
 
     @abstractmethod
-    def get_all_last_flats_links(self, page_from=1, page_to=3):
+    def get_all_last_flats_links(self, page_from=1, page_to=9):
         return []
 
     @abstractmethod

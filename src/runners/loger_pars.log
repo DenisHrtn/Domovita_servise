@@ -1,0 +1,11 @@
+2023-03-20 15:48:51,559 INFO Парсер начал работать
+2023-03-20 15:48:51,560 INFO Парсер стартовал(<src.parsers.domovita_parser.DomovitaParser object at 0x10636bf50>)
+2023-03-20 15:48:51,560 INFO Парсер завершил работу(<src.parsers.domovita_parser.DomovitaParser object at 0x10636bf50>)
+2023-03-20 15:50:00,334 ERROR При работе парсера произошла ошибка
+Traceback (most recent call last):
+  File "/Users/denisharitonciksergeevic/parser_project/src/runners/task_scheduler_runner.py", line 29, in <module>
+    schedule.every(5).minutes.do(parse_all(log=logging.info('Парсер начал работать')))
+  File "/Users/denisharitonciksergeevic/parser_project/venv/lib/python3.11/site-packages/schedule/__init__.py", line 625, in do
+    self.job_func = functools.partial(job_func, *args, **kwargs)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: the first argument must be callable

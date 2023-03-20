@@ -7,6 +7,7 @@ HOST = 'localhost'
 
 FLATS_TABLE = 'flats'
 
+
 def create_flats_table():
     with psycopg2.connect(dbname=DBNAME, user=USER, password=PASSWORD, host=HOST) as conn:
         with conn.cursor() as curs:

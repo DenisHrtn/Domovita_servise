@@ -10,7 +10,7 @@ class DomovitaParser(ParserStandart):
     def get_parser_name(self):
         return 'domovita'
 
-    def get_all_last_flats_links(self, page_from=1, page_to=3):
+    def get_all_last_flats_links(self, page_from=1, page_to=9):
         flat_links = []
         while page_from < page_to:
             resp = requests.get(f'https://domovita.by/minsk/flats/sale/?page={page_from}')
@@ -44,7 +44,7 @@ class DomovitaParser(ParserStandart):
                 square_div = html.find_all('div', class_='object-head__additional-info')
                 for square_span in square_div:
                     square_1 = square_span.findAllNext('span')
-                    ready_square =square_1[1].text.strip()
+                    ready_square = square_1[1].text.strip()
                     square.add(ready_square)
                 square = list(square)
             except Exception as e:
