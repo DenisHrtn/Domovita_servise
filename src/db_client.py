@@ -1,9 +1,10 @@
 import psycopg2
 
-DBNAME = 'postgres'
-USER = 'postgres'
-PASSWORD = '95233574'
-HOST = 'localhost'
+# your DB configs
+DBNAME = ''
+USER = ''
+PASSWORD = ''
+HOST = ''
 
 FLATS_TABLE = 'flats'
 
@@ -72,4 +73,3 @@ def update_is_posted(ids):
             ''',
                          {ids, }
                          )
-

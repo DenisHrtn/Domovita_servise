@@ -30,7 +30,10 @@ def make_post_telegram(log):
             # area
             post_mess += f'Район: {post[7]}, '
             # photo_link
-            post_mess += f" ".join(list(map(lambda el: el, post[6].split('{}')[:6])))
+            if len(post[6]) > 10:
+                post_mess += f" ".join(list(map(lambda el: el, post[6].split('{}')[:6])))
+            else:
+                post_mess += 'Фотография не была добавлена продавцом'
             tg_bot.send_post(post_mess)
             logging.info(f'Телеграмм-постер сделал пост:({post})')
             time.sleep(1)
